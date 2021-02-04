@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form class="login-panel shadow" action="" method="POST">
+    <div class="row justify-content-center">
+      <i class="far fa-user-circle" style="color: #996633; font-size: 60px; padding: 15px 0"></i>
+    </div>
+    <div class="row justify-content-center">
+      <p class="lead">Log into your account to search for books data</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-control" autocomplete="off" spellcheck="false" value={{request.form.username}}>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" autocomplete="off" spellcheck="false" value={{request.form.password}}>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button type="submit" class="button-lg">Login</button>
+    </div>
+</form>
+<hr>
+
+{% endblock %}

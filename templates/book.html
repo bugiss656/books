@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<hr>
+<p class="lead" style="font-size: 35px">Book details:</p>
+<div class="book-details">
+  <h4>Title: {{ book_details.title }}</h4>
+  <ul class="list-group">
+    <li class="list-group-item">ISBN: <b>{{ book_details.isbn }}</b></li>
+    <li class="list-group-item">Author: <b>{{ book_details.author }}</b></li>
+    <li class="list-group-item">Publication year: <b>{{ book_details.year }}</b></li>
+  </ul>
+</div>
+
+<p class="lead" style="font-size: 35px">Reviews:</p>
+<div class="book-reviews">
+  {% if reviews %}
+    {% for review in reviews %}
+      {% if review.username in session['username'] %}
+        <div class="review-card card">
+          <div class="card-header">
+            your review: <b>{{ review.username }}</b>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ review.review }}</p>
+              <footer class="blockquote-footer">rating: {{ review.rating }} <i class="fas fa-star" style="color: #e6e600"></i></footer>
+            </blockquote>
+          </div>
+        </div>
+      {% else %}
+        <div class="review-card card">
+          <div class="card-header">
+            author: {{ review.username }}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ review.review }}</p>
+              <footer class="blockquote-footer">rating: {{ review.rating }} <i class="fas fa-star" style="color: #e6e600"></i></footer>
+            </blockquote>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p class="lead">No reviews yet.</p>
+  {% endif %}
+
+  {% if user_review %}
+    <a href="/editreview">
+      <button class="button-lg">Edit review</button>
+    </a>
+    <a href="/deletereview">
+      <button class="button-lg">Delete review</button>
+    </a>
+  {% else %}
+    <a href="/addreview">
+      <button class="button-lg">Add review</button>
+    </a>
+  {% endif %}
+</div>
+
+<div id="goodreads-widget">
+  <div id="gr_header">
+    <h4>
+      {{ book_details.title }} ratings and reviews from <a href="https://www.goodreads.com" target="_blank">Goodreads</a>
+    </h4>
+  </div>
+  <iframe id="the_iframe" src="https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID&amp;format=html&amp;isbn={{ book_details.isbn }}&amp;links=660&amp;review_back=fff&amp;stars=000&amp;text=000" width="565" height="400" frameborder="0"></iframe>
+</div>
+<hr>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="search">
+  <div class="row justify-content-center">
+    <i class="fas fa-search" style="color: #996633; font-size: 50px; padding: 15px 0"></i>
+  </div>
+  <div class="row justify-content-md-center">
+    <p class="lead">Search for a book by isbn, title or author name</p>
+  </div>
+
+  <form action="" method="POST">
+    <div class="row justify-content-md-center">
+      <div class="input-group mb-3 col-md-6">
+        <input type="text" class="form-control form-control-lg" name="search">
+        <div class="input-group-append">
+          <button class="button-lg" type="submit" id="button-addon2">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="search-result">
+  <div class="row">
+    {% for book in books_data %}
+      <div class="col-md">
+        <div class="book-card card">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text lead">by {{ book.author }}</p>
+            <a href="book/{{ book[0] }}">
+              <button class="button-sm">Info</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+
+{% endblock %}

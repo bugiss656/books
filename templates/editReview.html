@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% from 'includes/_formhelpers.html' import render_field %}
+
+<form action="" method="POST">
+  <p class="lead">Rating:</p>
+  <div class="form-group">
+    <div class="form-check form-check-inline" id="rating-select">
+      <input type="radio" class="form-ckeck-input" name="rating" id="rating1" value="{{ 1 }}">
+      <label class="form-check-label" for="rating1">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-ckeck-input" name="rating" id="rating2" value="{{ 2 }}">
+      <label class="form-check-label" for="rating2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-ckeck-input" name="rating" id="rating3" value="{{ 3 }}">
+      <label class="form-check-label" for="rating3">3</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-ckeck-input" name="rating" id="rating4" value="{{ 4 }}">
+      <label class="form-check-label" for="rating4">4</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-ckeck-input" name="rating" id="rating5" value="{{ 5 }}">
+      <label class="form-check-label" for="rating5">5</label>
+    </div>
+  </div>
+  <p class="lead">Review:</p>
+  <div class="form-group">
+    {{ render_field(form.review, class_="form-control") }}
+  </div>
+
+  <button class="button-lg" type="submit">Edit review</button>
+</form>
+<hr>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% from 'includes/_formhelpers.html' import render_field %}
+
+
+
+<form method="POST" class="register-panel shadow" action="">
+  <div class="row justify-content-center">
+    <i class="fas fa-users" style="color: #996633; font-size: 50px; padding: 15px 0"></i>
+  </div>
+  <div class="row justify-content-center">
+    <p class="lead">Register to create your own account and search for books data</p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-sm-4">
+      {{ render_field(form.username, class_="form-control") }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-sm-4">
+      {{ render_field(form.email, class_="form-control") }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-sm-4">
+      {{ render_field(form.password, class_="form-control") }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form-group col-sm-4">
+      {{ render_field(form.confirm, class_="form-control") }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button type="submit" class="button-lg">Register</button>
+  </div>
+</form>
+<hr>
+
+{% endblock %}
